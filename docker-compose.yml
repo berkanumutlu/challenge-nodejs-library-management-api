@@ -2,8 +2,8 @@ version: '3'
 
 services:
   api:
-    container_name: library-managment-api
-    image: library-managment-api-image
+    container_name: library-management-api
+    image: library-management-api-image
     build:
       context: .
       dockerfile: docker/api.Dockerfile
@@ -16,7 +16,7 @@ services:
       - db
 
   db:
-    container_name: library-managment-db
+    container_name: library-management-db
     image: postgres:15.7
     env_file:
       - ./docker/.env
@@ -26,7 +26,7 @@ services:
       - postgresdata:/var/lib/postgresql/data
 
   pgadmin:
-    container_name: library-managment-pgadmin
+    container_name: library-management-pgadmin
     image: dpage/pgadmin4:8.12
     env_file:
       - ./docker/.env
