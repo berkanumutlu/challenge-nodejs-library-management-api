@@ -19,6 +19,15 @@ Book.init(
             type: DataTypes.STRING,
             allowNull: false,
             unique: true
+        },
+        score: {
+            type: DataTypes.VIRTUAL,
+            get() {
+                return this.getDataValue('score');
+            },
+            set(value: string) {
+                this.setDataValue('score', value);
+            }
         }
     },
     {

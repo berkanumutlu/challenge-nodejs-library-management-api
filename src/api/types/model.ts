@@ -8,6 +8,7 @@ export type UserModelType = {
 export type BookModelType = {
     id?: number;
     name: string;
+    score?: string | number;
     createdAt?: Date;
     updatedAt?: Date | null;
     deletedAt?: Date | null;

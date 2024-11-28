@@ -23,4 +23,4 @@ export const UserBooksResponseDtoKeys = ['past', 'present'] as const;
 export interface UserDetailedResponseDto extends UserResponseDto {
     books: UserBooksResponseDto;
 }
-export const UserDetailedResponseDtoKeys = ['id', 'name', 'books'] as const;
+export const UserDetailedResponseDtoKeys = [...UserResponseDtoKeys, 'books'] as const;
