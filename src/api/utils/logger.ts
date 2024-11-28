@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 // import { fileURLToPath } from "url";
-import { CustomRequest, CustomResponse, CustomNext } from "@/types/request";
+import { CustomRequest, CustomResponse, CustomNext } from "@/types/route";
 import { appConfig } from "@/config";
 
 const date: string = new Date().toISOString();

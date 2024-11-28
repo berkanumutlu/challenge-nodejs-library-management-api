@@ -1,15 +1,9 @@
 import { Router } from "express";
-import { CustomRequest, CustomResponse } from "@/types/request";
+import userRoutes from "./user.routes";
 
 const router = Router();
 
-// router.use('/users', userRoutes);
-router.get('/', (req, res) => {
-    res.json({ message: 'Hello world!' });
-});
-router.get('/hello', (req: CustomRequest, res: CustomResponse) => {
-    res.success({ user: "John Doe" }, "User fetched successfully");
-});
+router.use('/users', userRoutes);
 // ... Route definitions for other endpoints
 
 export default router;

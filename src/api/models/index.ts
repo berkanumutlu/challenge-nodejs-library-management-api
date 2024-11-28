@@ -13,4 +13,5 @@ export const initializeAssociations = () => {
     });
 };
 
+export { User, Book, BorrowedBook };
 export default models;

@@ -1,20 +1,19 @@
 export type UserModelType = {
-    id: number;
+    id?: number;
     name: string;
-    email: string;
     createdAt?: Date;
     updatedAt?: Date | null;
     deletedAt?: Date | null;
 };
 export type BookModelType = {
-    id: number;
+    id?: number;
     name: string;
     createdAt?: Date;
     updatedAt?: Date | null;
     deletedAt?: Date | null;
 };
 export type BorrowedBookModelType = {
-    id: number;
+    id?: number;
     userId: number;
     bookId: number;
     borrowAt: Date;
