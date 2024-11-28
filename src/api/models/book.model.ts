@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import { BookModelType } from "@/types/models";
+import { BookModelType } from "@/types/model";
 import { db } from "@/config/database";
 
 export class Book extends Model<BookModelType> {

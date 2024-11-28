@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import { UserModelType } from "@/types/models";
+import { UserModelType } from "@/types/model";
 import { db } from "@/config/database";
 
 export class User extends Model<UserModelType> {
