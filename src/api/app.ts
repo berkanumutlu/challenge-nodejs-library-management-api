@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { appConfig, databaseConfig } from "@/config";
 import { db } from "@/config/database";
+import { initializeAssociations } from '@/models';
 import { responseHandler } from "@/middlewares/responseHandler";
 import { errorHandler } from "@/middlewares/errorHandler";
 import routes from "@/routes";
@@ -28,12 +29,21 @@ server.use('', routes);
 const main = async () => {
     try {
         console.log(`Trying to connect to Database: ${databaseConfig.database}`);
-        await db.authenticate();
-        console.log('Database connected successfully!');
+
+        // Initialize model associations
+        initializeAssociations();
+
+        if (appConfig.env !== 'production') {
+            await db.sync({ alter: true });
+            console.log('Database models synchronized.');
+        } else {
+            await db.authenticate();
+            console.log('Database connected successfully!');
+        }
 
         server.listen(port, () => {
-            console.log(`env:  ${appConfig.env}`);
-            console.log(`server: ${host}:${port}, start running`);
+            console.log(`env    : ${appConfig.env}`);
+            console.log(`server : ${host}:${port}, start running`);
         });
     } catch (err) {
         console.error(`Unable to start server or connect to the database: ${err}`);
