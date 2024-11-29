@@ -32,12 +32,12 @@ export class UserService {
         const userResponseDto = mapDataToDto(UserResponseDtoKeys, user);
 
         const userBorrowedBooks = user.get('borrowedBooks') as any[];
-        const userPastBorrowedBooks = userBorrowedBooks.filter(borrowedBookItem => borrowedBookItem.getDataValue('returnAt') !== null)
+        const userPastBorrowedBooks = userBorrowedBooks.filter(borrowedBookItem => borrowedBookItem.getDataValue('returnAt') !== null && borrowedBookItem.getDataValue('book'))
             .map(borrowedBookItem => {
-                borrowedBookItem.book.userScore = borrowedBookItem.rating;
+                borrowedBookItem.book.setDataValue('userScore', borrowedBookItem.rating);
                 return mapDataToDto(UserBookDtoKeys, borrowedBookItem.getDataValue('book'));
             });
-        const userPresentBorrowedBooks = userBorrowedBooks.filter(borrowedBookItem => borrowedBookItem.getDataValue('returnAt') === null)
+        const userPresentBorrowedBooks = userBorrowedBooks.filter(borrowedBookItem => borrowedBookItem.getDataValue('returnAt') === null && borrowedBookItem.getDataValue('book'))
             .map(borrowedBookItem => mapDataToDto(UserBookDtoKeys, borrowedBookItem.getDataValue('book')));
 
         const userBooksResponseDto = {

@@ -13,7 +13,7 @@ export class BookService {
         return mapDataToDto<BooksResponseDto>(BooksResponseDtoKeys, books) as BooksResponseDto[];
     };
 
-    public getBookById = async (bookId: number): Promise<BookResponseDto | null> => {
+    public getBookByIdWithBorrows = async (bookId: number): Promise<BookResponseDto | null> => {
         const book = await Book.findByPk(bookId, {
             include: [{
                 model: BorrowedBook,
@@ -30,14 +30,26 @@ export class BookService {
             return null;
         }
 
+        let score: string | number = -1;
         const borrows = book.get('borrows') as any[];
-        const score = borrows.length > 0 ? (borrows.reduce((sum, book) => sum + book.rating, 0) / borrows.length).toFixed(2) : -1;
+        if (borrows.length > 0) {
+            score = (borrows.reduce((sum, book) => sum + book.rating, 0) / borrows.length).toFixed(2);
+        }
         book.setDataValue('score', score);
 
         return mapDataToDto<BookResponseDto>(BookResponseDtoKeys, book) as BookResponseDto;
     };
 
     public createBook = async (bookData: CreateBookDto): Promise<BookResponseDto> => {
+        const existingBook = await Book.findOne({
+            where: { name: bookData.name },
+            paranoid: false
+        });
+
+        if (existingBook) {
+            throw new Error(`A book with the name "${bookData.name}" already exists.`);
+        }
+
         const book = await Book.create(bookData);
 
         return mapDataToDto<BookResponseDto>(BookResponseDtoKeys, book) as BookResponseDto;

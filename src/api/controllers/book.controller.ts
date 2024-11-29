@@ -14,6 +14,7 @@ export class BookController {
             const records = await this.bookService.getBooks();
 
             // if (!records || !records.length) return res.warning('No books found.');
+            if (!records || !records.length) return res.success(null, null, 204);
 
             return res.success(records);
         } catch (error) {
@@ -25,9 +26,10 @@ export class BookController {
         try {
             const { id } = req.params as unknown as BookRequestParamsDto;
 
-            const record = await this.bookService.getBookById(id);
+            const record = await this.bookService.getBookByIdWithBorrows(id);
 
             // if (!record) return res.warning('Book not found.');
+            if (!record) return res.success(null, null, 204);
 
             return res.success(record);
         } catch (error) {
