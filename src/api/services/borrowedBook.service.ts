@@ -16,7 +16,7 @@ export class BorrowedBookService {
         return newRecord;
     };
 
-    async returnBook(userId: number, bookId: number, score?: number) {
+    public returnBook = async (userId: number, bookId: number, score?: number) => {
         const borrowedBook = await BorrowedBook.findOne({ where: { userId, bookId }, attributes: ['id', 'returnAt', 'rating'] });
         if (!borrowedBook) {
             throw new Error('No borrow record found for this user and book.');
@@ -34,5 +34,5 @@ export class BorrowedBookService {
         await borrowedBook.save();
 
         return borrowedBook;
-    }
+    };
 }

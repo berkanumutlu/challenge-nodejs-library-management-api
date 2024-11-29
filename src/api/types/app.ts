@@ -6,6 +6,7 @@ export type AppConfigType = {
     corsOrigin?: string;
     loggingFile?: boolean;
 };
+
 export type DatabaseConfigType = {
     host: string;
     database: string;

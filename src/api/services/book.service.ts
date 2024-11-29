@@ -1,7 +1,7 @@
+import { Op } from "sequelize";
 import { BookResponseDto, BookResponseDtoKeys, BooksResponseDto, BooksResponseDtoKeys, CreateBookDto } from "@/types/dtos/book.dto";
 import { mapDataToDto } from "@/utils/dto";
-import { User, Book, BorrowedBook } from "@/models";
-import { Op } from "sequelize";
+import { Book, BorrowedBook } from "@/models";
 
 export class BookService {
     public getBooks = async (): Promise<BooksResponseDto[]> => {

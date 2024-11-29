@@ -2,21 +2,25 @@ export interface CreateUserDto {
     name: string;
 }
 
+export interface UserRequestParamsDto {
+    id: number;
+}
+
 export interface UserResponseDto {
     id: number;
     name: string;
 }
 export const UserResponseDtoKeys = ['id', 'name'] as const;
 
-export interface UserBookDto {
+export interface UserBookResponseDto {
     name: string;
     userScore?: number;
 }
 export const UserBookDtoKeys = ['name', 'userScore'] as const;
 
 export interface UserBooksResponseDto {
-    past: UserBookDto[];
-    present: UserBookDto[];
+    past: UserBookResponseDto[];
+    present: UserBookResponseDto[];
 }
 export const UserBooksResponseDtoKeys = ['past', 'present'] as const;
 

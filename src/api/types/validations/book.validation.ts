@@ -11,3 +11,13 @@ export const createBookSchema = z.object({
             })
     })
 });
+
+export const getBookSchema = z.object({
+    params: z.object({
+        id: z.string()
+            .transform((val) => parseInt(val, 10))
+            .refine((val) => !isNaN(val) && Number.isInteger(val) && val > 0, {
+                message: 'id must be a positive integer'
+            })
+    })
+});

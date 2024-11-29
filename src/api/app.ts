@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import { appConfig, databaseConfig } from "@/config";
 import { db } from "@/config/database";
-import { initializeAssociations } from '@/models';
+import { initializeAssociations } from "@/models";
 import { responseHandler } from "@/middlewares/responseHandler";
 import { errorHandler } from "@/middlewares/errorHandler";
 import routes from "@/routes";

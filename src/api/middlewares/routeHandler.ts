@@ -5,9 +5,9 @@ export const validateRequest = (schema: AnyZodObject) => {
     return async (req: CustomRequest, res: CustomResponse, next: CustomNext) => {
         try {
             await schema.parseAsync({
-                body: req.body,
+                params: req.params,
                 query: req.query,
-                params: req.params
+                body: req.body
             });
             next();
         } catch (error) {

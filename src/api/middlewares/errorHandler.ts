@@ -3,5 +3,5 @@ import { createNewLog } from "@/utils/logger";
 
 export const errorHandler = (err: any, req: CustomRequest, res: CustomResponse, next: CustomNext) => {
     createNewLog(err, req, res, next);
-    res.error(err);
+    return res.error(err);
 };

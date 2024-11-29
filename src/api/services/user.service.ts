@@ -39,6 +39,7 @@ export class UserService {
             });
         const userPresentBorrowedBooks = userBorrowedBooks.filter(borrowedBookItem => borrowedBookItem.getDataValue('returnAt') === null)
             .map(borrowedBookItem => mapDataToDto(UserBookDtoKeys, borrowedBookItem.getDataValue('book')));
+
         const userBooksResponseDto = {
             books: {
                 past: userPastBorrowedBooks,

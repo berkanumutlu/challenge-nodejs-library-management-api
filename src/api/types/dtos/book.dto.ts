@@ -2,6 +2,10 @@ export interface CreateBookDto {
     name: string;
 }
 
+export interface BookRequestParamsDto {
+    id: number;
+}
+
 export interface BooksResponseDto {
     id: number;
     name: string;

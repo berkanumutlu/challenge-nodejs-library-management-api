@@ -1,6 +1,6 @@
-import { User } from './user.model';
-import { Book } from './book.model';
-import { BorrowedBook } from './borrowedBook.model';
+import { User } from "./user.model";
+import { Book } from "./book.model";
+import { BorrowedBook } from "./borrowedBook.model";
 
 const models = { User, Book, BorrowedBook };
 

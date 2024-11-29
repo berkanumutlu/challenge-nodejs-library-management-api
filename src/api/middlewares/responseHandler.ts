@@ -6,10 +6,9 @@ export const responseHandler = (req: CustomRequest, res: CustomResponse, next: C
     res.success = function (data: any = null, message: string | null = null, status: number = 200) {
         if (data) {
             return this.status(status).json(data);
-        } else {
-            // return this.status(status).json({ success: true, message });
-            return this.status(status).json();
         }
+        // return this.status(status).json({ success: true, message });
+        return this.status(status).json();
     };
     res.warning = function (message: string | null = null, status: number = 400) {
         return this.status(status).json({ success: false, message: message });
