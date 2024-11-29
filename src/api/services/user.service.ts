@@ -12,7 +12,7 @@ export class UserService {
         return mapDataToDto<UserResponseDto>(UserResponseDtoKeys, users) as UserResponseDto[];
     };
 
-    public getUserById = async (userId: number): Promise<UserDetailedResponseDto | null> => {
+    public getUserByIdWithBooks = async (userId: number): Promise<UserDetailedResponseDto | null> => {
         const user = await User.findByPk(userId, {
             include: [{
                 model: BorrowedBook,

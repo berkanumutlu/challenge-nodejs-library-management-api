@@ -25,7 +25,7 @@ export class UserController {
         try {
             const { id } = req.params as unknown as UserRequestParamsDto;
 
-            const record = await this.userService.getUserById(id);
+            const record = await this.userService.getUserByIdWithBooks(id);
 
             // if (!record) return res.warning('User not found.');
 
