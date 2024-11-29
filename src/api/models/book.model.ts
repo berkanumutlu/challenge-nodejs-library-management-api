@@ -28,6 +28,15 @@ Book.init(
             set(value: string) {
                 this.setDataValue('score', value);
             }
+        },
+        userScore: {
+            type: DataTypes.VIRTUAL,
+            get() {
+                return this.getDataValue('userScore');
+            },
+            set(value: number) {
+                this.setDataValue('userScore', value);
+            }
         }
     },
     {

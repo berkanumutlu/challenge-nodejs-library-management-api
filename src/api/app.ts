@@ -54,4 +54,4 @@ const main = async () => {
 main();
 
 // ErrorHandler
-server.use(errorHandler as express.ErrorRequestHandler);
+server.use(errorHandler as unknown as express.ErrorRequestHandler);

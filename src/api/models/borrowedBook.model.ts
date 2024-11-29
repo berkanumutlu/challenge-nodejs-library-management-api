@@ -52,12 +52,6 @@ BorrowedBook.init(
         tableName: 'BorrowedBooks',
         modelName: 'BorrowedBook',
         timestamps: true,
-        paranoid: true,
-        indexes: [
-            {
-                unique: true,
-                fields: ['userId', 'bookId']
-            }
-        ]
+        paranoid: true
     }
 );

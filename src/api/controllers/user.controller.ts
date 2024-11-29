@@ -14,6 +14,7 @@ export class UserController {
             const records = await this.userService.getUsers();
 
             // if (!records || !records.length) return res.warning('No users found.');
+            if (!records || !records.length) return res.success(null, null, 204);
 
             return res.success(records);
         } catch (error) {
@@ -25,9 +26,10 @@ export class UserController {
         try {
             const { id } = req.params as unknown as UserRequestParamsDto;
 
-            const record = await this.userService.getUserById(id);
+            const record = await this.userService.getUserByIdWithBooks(id);
 
             // if (!record) return res.warning('User not found.');
+            if (!record) return res.success(null, null, 204);
 
             return res.success(record);
         } catch (error) {
